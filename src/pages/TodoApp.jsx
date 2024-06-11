@@ -5,7 +5,7 @@ import TodoContainer from '../components/TodoContainer'
 import useFetch from '../hooks/useFetch'
 
 function TodoApp() {
-  const [jobs, error, loading] = useFetch(`http://localhost:8000/jobs`)
+  const [jobs, error, loading, reload] = useFetch(`http://localhost:8000/jobs`)
 
   if(loading) {
     return <h1>Loading...</h1>
@@ -19,7 +19,7 @@ function TodoApp() {
     <h1>Jobs</h1>
     <div className="todoapp">
       <Dashboard amount={jobs.length}/>
-      <FormAddTodo/>
+      <FormAddTodo reload={reload}/>
       <TodoContainer jobs={jobs}/>
 
     </div>

@@ -61,6 +61,24 @@
       "todo": "Learn HTML",
       "completed": false,
       "userId": "54cf"
+    },
+    {
+      "id": "306b",
+      "todo": "Learn CSS",
+      "completed": false,
+      "userId": "54cf"
+    },
+    {
+      "id": "11f6",
+      "todo": "Learn JS",
+      "completed": false,
+      "userId": "54cf"
+    },
+    {
+      "id": "a24b",
+      "todo": "Practice React.js",
+      "completed": false,
+      "userId": "6a50"
     }
   ]
 }
