@@ -1,6 +1,9 @@
 import { useState } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
+  const navigate = useNavigate()
   const [input, setInput] = useState({
     name: "",
     password: "",
@@ -14,8 +17,22 @@ function Register() {
 
   const hdlSubmit = async e => {
     e.preventDefault();
+    // validation
+    if(input.password !== input.confirmPassword) {
+      return alert('Password <> Confirm Password')
+    }
     try{
-
+    const res = await axios.get(`http://localhost:8000/users?name=${input.name}`)
+    if(res.data.length) {
+      return alert(`${input.name} have already register`)
+    }
+      const body = {
+        name : input.name,
+        password : input.password,
+        email : input.email
+      }
+      await axios.post('http://localhost:8000/users', body)
+      navigate('/')
     }catch(err) {
       console.log(err.message)
     }

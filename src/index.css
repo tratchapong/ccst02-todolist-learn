@@ -16,6 +16,10 @@ body {
 header {
   padding: 8px;
   background-color: aquamarine;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+
 }
 
 header nav {
