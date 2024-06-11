@@ -1,14 +1,17 @@
 import React from 'react'
 import TodoItem from './TodoItem'
 
-function TodoContainer() {
+function TodoContainer({jobs}) {
   return (
     <div className='todo-container'>
-      <TodoItem />
-      <TodoItem />
-      <TodoItem />
+      { jobs.map( el => (
+        <TodoItem key={el.id} job={el} />
+      ))
+
+      }
     </div>
   )
 }
 
 export default TodoContainer
+
