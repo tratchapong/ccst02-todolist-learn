@@ -35,7 +35,7 @@
     {
       "id": "2",
       "todo": "Memorize the fifty states and their capitals",
-      "completed": false,
+      "completed": true,
       "userId": "dc4a"
     },
     {
@@ -53,13 +53,13 @@
     {
       "id": "5",
       "todo": "Solve a Rubik's cube",
-      "completed": false,
+      "completed": true,
       "userId": "6a50"
     },
     {
       "id": "6",
       "todo": "Learn HTML",
-      "completed": false,
+      "completed": true,
       "userId": "54cf"
     },
     {
