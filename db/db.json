@@ -73,6 +73,12 @@
       "todo": "Practice React.js",
       "completed": false,
       "userId": "6a50"
+    },
+    {
+      "id": "cfc7",
+      "todo": "andy-job01",
+      "completed": true,
+      "userId": "54cf"
     }
   ]
 }

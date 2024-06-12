@@ -1,31 +1,16 @@
-import axios from "axios";
 import { useState } from "react";
 
-function TodoItem({ job, reload, editId, setEditId }) {
+function TodoItem({ 
+  job, editId, setEditId, hdlDelete, hdlUpdate
+}) {
   const [inputTitle, setInputTitle] = useState(job.todo)
   const [jobDone, setJobDone] = useState(job.completed)
 
-  const hdlDelete = async () => {
-    if (!confirm("Confirm delete ?")) {
-      return;
-    }
-    try {
-      await axios.delete(`http://localhost:8000/jobs/${job.id}`);
-      reload();
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
 
-  const hdlUpdate = async () => {
+  const onSave = () => {
     const body = { ...job, todo: inputTitle, completed: jobDone }
-    try {
-      await axios.put(`http://localhost:8000/jobs/${job.id}`,body)
-      reload()
-    }catch(error) {
-      console.log(error.message)
-    }
-  };
+    hdlUpdate(job.id, body)
+  }
 
   const hdlCancel = () => {
     setInputTitle(job.todo)
@@ -38,7 +23,7 @@ function TodoItem({ job, reload, editId, setEditId }) {
         <>
           <input type="checkbox" checked={jobDone} onChange={e=>setJobDone(e.target.checked)} />
           <input type="text" value={inputTitle} onChange={e=>setInputTitle(e.target.value)} />
-          <button onClick={hdlUpdate}>Save</button>
+          <button onClick={onSave}>Save</button>
           <button onClick={hdlCancel}>cancel</button>
         </>
       ) : (
@@ -47,7 +32,7 @@ function TodoItem({ job, reload, editId, setEditId }) {
             style={{color: job.completed? 'green' : ''}}
           />
           <button onClick={() => setEditId(job.id)}>Edit</button>
-          <button onClick={hdlDelete}>Delete</button>
+          <button onClick={() => hdlDelete(job.id)}>Delete</button>
         </>
       )}
     </div>
